@@ -1,0 +1,121 @@
+.sidebar {
+    width: 20%;
+    border-right: 3px solid var(--border);
+    min-height: 100vh;
+    grid-area: aside;
+}
+
+.sidebar .sidebar-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .sidebar-title img {
+    width: 56px;
+    height: 56px;
+}
+
+.sidebar .sidebar-title h1 {
+    color: var(--bright-blue);
+}
+
+.sidebar .sidebar-btn-container {
+    margin: 20px auto 0;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 10px;
+}   
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView .sidebar-btn-arrow-container {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView,
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView * {
+    transition: all 500ms ease-in-out;
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView div {
+    display: flex;
+    gap: 5px;
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView h3 {
+    font-weight: 500;
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView.selected {
+    background-color: var(--card-bg);
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView.selected .sidebar-btn-arrow-container {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.sidebar .sidebar-separator {
+    margin: 10px auto;
+    width: 90%;
+    border-color: var(--border);
+}
+
+.sidebar .sidebar-tags-list-container {
+    width: 90%;
+    margin: auto;
+}
+
+.sidebar .sidebar-tags-list-container h4 {
+    color: #999;
+    font-weight: 600;
+    
+}
+
+.sidebar .sidebar-tags-list-container .sidebar-tags-list {
+    margin-top: 5px;
+    max-height: 425px;
+    overflow: auto;
+}
+
+.sidebar .sidebar-tags-list-container .sidebar-tags-list li {
+    margin: 10px 0;
+}
+
+.sidebar .sidebar-tags-list-container .sidebar-tags-list li button {
+    width: 100%;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+.sidebar .sidebar-tags-list-container .sidebar-tags-list li button,
+.sidebar .sidebar-tags-list-container .sidebar-tags-list li button * {
+    transition: all 500ms ease;
+}
+
+.sidebar .sidebar-tags-list-container .sidebar-tags-list li button.selected svg {
+    color: var(--bright-blue);
+}
+
+.sidebar .sidebar-tags-list-container .sidebar-tags-list li button.selected {
+    background-color: var(--card-bg);
+}
