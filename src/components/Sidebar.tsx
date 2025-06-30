@@ -5,11 +5,14 @@ import { HomeIcon, ArrowRight01FreeIcons, Archive01FreeIcons, Tag01FreeIcons } f
 import { useState } from 'react'
 import './styles/Sidebar.css'
 import { useFilters } from '../hooks/filter.hook'
+import { useViewMode } from '../hooks/viewMode.hook'
+import { Icon } from './Icon'
 
 export const Sidebar: React.FC = () => {
     const [typeNote, setTypeNote] = useState<'notes' | 'archived'>('notes')
     const { tags } = useNotes()
     const { toggleTag } = useFilters()
+    const { setViewMode } = useViewMode()
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const btn = e.target as HTMLButtonElement
@@ -30,23 +33,29 @@ export const Sidebar: React.FC = () => {
                 <h1 className='pacifico'>Notes</h1>
             </div>
             <div className='sidebar-btn-container'>
-                <button className={`sidebar-btn-noteToView ${typeNote === 'notes' ? 'selected' : ''}`} onClick={() => setTypeNote('notes')}>
+                <button className={`sidebar-btn-noteToView ${typeNote === 'notes' ? 'selected' : ''}`} onClick={() => {
+                    setTypeNote('notes')
+                    setViewMode('all')
+                }}>
                     <div>
-                        <HugeiconsIcon icon={HomeIcon} size={19} color={typeNote === 'notes' ? 'var(--bright-blue)' : 'var(--text)'}  strokeWidth={1.5}/>
+                        <Icon icon={HomeIcon}/>
                         <h3 className='inter'>All Notes</h3>
                     </div>
                     <span className='sidebar-btn-arrow-container'>
-                        <HugeiconsIcon icon={ArrowRight01FreeIcons} size={19} color='var(--text)'  strokeWidth={1.5}/>
+                        <Icon icon={ArrowRight01FreeIcons}/>
                     </span>
                 </button>
 
-                <button className={`sidebar-btn-noteToView ${typeNote === 'archived' ? 'selected' : ''}`} onClick={() => setTypeNote('archived')}>
+                <button className={`sidebar-btn-noteToView ${typeNote === 'archived' ? 'selected' : ''}`} onClick={() => {
+                    setTypeNote('archived')
+                    setViewMode('archived')
+                }}>
                     <div>
-                        <HugeiconsIcon icon={Archive01FreeIcons} size={19} color={typeNote === 'archived' ? 'var(--bright-blue)' : 'var(--text)'}  strokeWidth={1.5}/>
+                        <Icon icon={Archive01FreeIcons}/>
                         <h3 className='inter'>Archived</h3>
                     </div>
                     <span className='sidebar-btn-arrow-container'>
-                        <HugeiconsIcon icon={ArrowRight01FreeIcons} size={19} color='var(--text)'  strokeWidth={1.5}/>
+                        <Icon icon={ArrowRight01FreeIcons}/>
                     </span>
                 </button>
             </div>

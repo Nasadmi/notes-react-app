@@ -1,10 +1,9 @@
 .layout {
-    display: grid;
-    grid-template-columns: 1200px 1fr 2fr 150px;
-    grid-template-rows: 60px 1fr;
-    grid-template-areas: 
-        "aside header header header"
-        "aside list content options"
-    ;
-    height: 100dvh;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.layout main {
+  width: 100%;
 }

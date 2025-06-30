@@ -33,22 +33,19 @@ export const NotesProvider = ({
       last_edited: Date.now(),
       archived: false,
     };
-    const id = await indexedDBService.addNote(newNote);
-    const addedNotes = [...notes, { ...newNote, id }];
-    setNotes(addedNotes);
+    await indexedDBService.addNote(newNote);
+    await refreshNotes()
   };
 
   const updateNote: NotesContextProps["updateNote"] = async (note: Note) => {
     const noteUpdated: Note = { ...note, last_edited: Date.now() };
     await indexedDBService.updateNote(noteUpdated);
-    const newNotes = notes.map((n) => (n.id === note.id ? noteUpdated : n));
-    setNotes(newNotes);
+    await refreshNotes()
   };
 
   const deleteNote: NotesContextProps["deleteNote"] = async (id) => {
     await indexedDBService.removeNote(id);
-    const newNotes = notes.filter((n) => n.id !== id);
-    setNotes(newNotes);
+    await refreshNotes()
   };
 
   return (

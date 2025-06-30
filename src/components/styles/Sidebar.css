@@ -1,8 +1,7 @@
 .sidebar {
     width: 20%;
-    border-right: 3px solid var(--border);
-    min-height: 100vh;
-    grid-area: aside;
+    border-right: 2px solid var(--border);
+    height: 100%;
 }
 
 .sidebar .sidebar-title {
@@ -60,6 +59,10 @@
 
 .sidebar .sidebar-btn-container .sidebar-btn-noteToView.selected {
     background-color: var(--card-bg);
+}
+
+.sidebar .sidebar-btn-container .sidebar-btn-noteToView.selected svg {
+    color: var(--bright-blue);
 }
 
 .sidebar .sidebar-btn-container .sidebar-btn-noteToView.selected .sidebar-btn-arrow-container {

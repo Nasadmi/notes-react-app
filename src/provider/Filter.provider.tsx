@@ -19,10 +19,14 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
     const filteredNotes = useMemo(() => {
         const searchLower = search.toLowerCase()
         return notes.filter(note => {
-            const matchesSearch =
-                note.title.toLowerCase().includes(searchLower) ||
-                note.content.toLowerCase().includes(searchLower) ||
-                note.tags.some(tag => tag.toLowerCase().includes(searchLower))
+            const matchesSearch = searchLower.length !== 0 ?
+                (
+                    note.title.toLowerCase().includes(searchLower) ||
+                    note.content.toLowerCase().includes(searchLower) ||
+                    note.tags.some(tag => tag.toLowerCase().includes(searchLower))
+                ) :
+                true
+                
             
             const matchesTags =
                 selectedTags.length === 0 ||

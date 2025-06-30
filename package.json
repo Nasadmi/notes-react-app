@@ -12,6 +12,7 @@
   "dependencies": {
     "@hugeicons/core-free-icons": "^1.0.14",
     "@hugeicons/react": "^1.0.5",
+    "debounce": "^2.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
