@@ -1,7 +1,7 @@
 import { useFilters } from "../hooks/filter.hook"
 import { AddNote } from "./AddNotes"
 import { formatDate, capitalize } from "../service/formatDate"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { Add01FreeIcons } from "@hugeicons/core-free-icons"
 import { Icon } from "./Icon"
 import './styles/NotesList.css'
