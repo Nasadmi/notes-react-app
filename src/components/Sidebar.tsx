@@ -64,8 +64,8 @@ export const Sidebar: React.FC = () => {
                 <h4 className='inter'>Tags</h4>
                 <ul className='sidebar-tags-list'>
                     {
-                        tags.map(tag => (
-                            <li>
+                        tags.map((tag, i) => (
+                            <li key={i}>
                                 <button className='inter' onClick={handleClick} data-tag={tag}>
                                     <HugeiconsIcon icon={Tag01FreeIcons} size={19} color='var(--text)'  strokeWidth={1.5}/>
                                     {tag}
