@@ -13,6 +13,8 @@ export const Toast = withReactContent(Swal).mixin({
     }
 })
 
+export const Alert = withReactContent(Swal)
+
 export const ErrorAlert: SweetAlertOptions = {
     title: 'Something went wrong',
     icon: 'error'

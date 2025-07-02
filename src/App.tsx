@@ -5,6 +5,7 @@ import { ViewModeProvider } from './provider/ViewMode.provider'
 import { NotesIdProvider } from './provider/NotesId.provider'
 import { NotesList } from './components/NotesList'
 import { NotesContent } from './components/NotesContent'
+import { NotesManager } from './components/NotesManager'
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
             <NotesIdProvider>
               <NotesList />
               <NotesContent />
-              <span>hello</span>
+              <NotesManager />
             </NotesIdProvider>
           </section>
         </main>

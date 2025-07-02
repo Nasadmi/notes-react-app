@@ -1,0 +1,40 @@
+.notesManager {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: top center;
+  gap: 20px;
+}
+
+.notesManager button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.notesManager button,
+.notesManager button svg {
+  transition: all 500ms ease;
+}
+
+.notesManager button:hover,
+.notesManager button:hover svg {
+  color: var(--bg);
+}
+
+.notesManager button.notesManager-removeNote:hover {
+  background-color: #b22222;
+}
+
+.notesManager button.notesManager-archivedNote:hover {
+  background-color: var(--bright-blue);
+}

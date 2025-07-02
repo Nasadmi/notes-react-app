@@ -20,7 +20,7 @@
 
 .layout .layout-grid {
   display: grid;
-  grid-template-columns: 1fr 3.5fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
 .relative {
