@@ -2,7 +2,9 @@ import './App.css'
 import { Sidebar } from './components/Sidebar'
 import { Search } from './components/Search'
 import { ViewModeProvider } from './provider/ViewMode.provider'
+import { NotesIdProvider } from './provider/NotesId.provider'
 import { NotesList } from './components/NotesList'
+import { NotesContent } from './components/NotesContent'
 
 function App() {
 
@@ -12,8 +14,12 @@ function App() {
         <Sidebar />
         <main>
           <Search />
-          <section className='layout-flex relative'>
-            <NotesList />
+          <section className='layout-grid relative'>
+            <NotesIdProvider>
+              <NotesList />
+              <NotesContent />
+              <span>hello</span>
+            </NotesIdProvider>
           </section>
         </main>
       </ViewModeProvider>

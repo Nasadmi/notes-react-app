@@ -5,6 +5,7 @@ import { Tag01FreeIcons, Add01FreeIcons } from "@hugeicons/core-free-icons";
 import "./styles/AddNotes.css";
 import { AddTag } from "./AddTag";
 import { capitalize } from "../service/formatDate";
+import { ErrorAlert, Toast } from "../service/alerts";
 
 export const AddNote = ({ showing }: { showing: boolean }) => {
   const { tags, addNote } = useNotes();
@@ -34,11 +35,19 @@ export const AddNote = ({ showing }: { showing: boolean }) => {
   }, [addNewTag]);
 
   const handleAddTag = (tag: FormDataEntryValue) => {
-    if (settedTags.includes(tag)) {
+    if (tag === "") {
+      Toast.fire({
+        title: 'The name tag cannot be empty',
+        icon: 'warning'
+      })
       return;
     }
-
-    if (tag === "") {
+    
+    if (settedTags.includes(tag)) {
+      Toast.fire({
+        title: 'This tag already exists',
+        icon: 'error'
+      })
       return;
     }
 
@@ -75,14 +84,23 @@ export const AddNote = ({ showing }: { showing: boolean }) => {
     })
 
     if (title === null) {
+      Toast.fire(ErrorAlert)
       return;
     }
 
     if (title.value === '') {
+      Toast.fire({
+        title: 'The title cannot be empty',
+        icon: 'warning'
+      })
       return;
     }
 
     if (newTags.length === 0) {
+      Toast.fire({
+        title: 'You must select atleast one tag',
+        icon: 'warning'
+      })
       return
     }
 
@@ -93,6 +111,10 @@ export const AddNote = ({ showing }: { showing: boolean }) => {
     })
 
     document.dispatchEvent(escEvent)
+    Toast.fire({
+      title: 'Note created successfully',
+      icon: 'success'
+    })
   }
 
   return (

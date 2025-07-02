@@ -18,6 +18,11 @@
   height: 100%;
 }
 
+.layout .layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 3.5fr 1fr;
+}
+
 .relative {
   position: relative;
 }

@@ -37,6 +37,10 @@ export const NotesProvider = ({
     await refreshNotes()
   };
 
+  const getNote: NotesContextProps['getNote'] = async (id) => {
+    return await indexedDBService.getNote(id)
+  }
+
   const updateNote: NotesContextProps["updateNote"] = async (note: Note) => {
     const noteUpdated: Note = { ...note, last_edited: Date.now() };
     await indexedDBService.updateNote(noteUpdated);
@@ -50,7 +54,7 @@ export const NotesProvider = ({
 
   return (
     <NotesContext.Provider
-      value={{ notes, addNote, updateNote, deleteNote, refreshNotes, tags }}
+      value={{ notes, addNote, updateNote, deleteNote, refreshNotes, tags, getNote }}
     >
       {children}
     </NotesContext.Provider>

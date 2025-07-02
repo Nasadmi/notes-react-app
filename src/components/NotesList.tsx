@@ -4,10 +4,12 @@ import { formatDate, capitalize } from "../service/formatDate"
 import { useEffect, useState } from "react"
 import { Add01FreeIcons } from "@hugeicons/core-free-icons"
 import { Icon } from "./Icon"
+import { useNotesId } from "../hooks/notesId.hook"
 import './styles/NotesList.css'
 
 export const NotesList = () => {
     const { filteredNotes } = useFilters()
+    const { setId } = useNotesId()
     const [showAddNotes, setShowAddNotes] = useState<boolean>(false)
     const [selectedNote, setSelectedNote] = useState<number | undefined>(undefined)
 
@@ -33,7 +35,9 @@ export const NotesList = () => {
             return;
         }
 
-        setSelectedNote(parseInt(id))
+        const idNumber = parseInt(id)
+        setId(idNumber)
+        setSelectedNote(idNumber)
     }
 
     return (
@@ -44,7 +48,7 @@ export const NotesList = () => {
             </button>
             <ul className="notes-list-ul">
                 {
-                    filteredNotes.map((note) => (
+                    filteredNotes.sort((a,b) => b.last_edited - a.last_edited).map((note) => (
                         <li data-id={note.id} key={note.id} onClick={handleSelectNote} className={note.id === selectedNote ? 'selected' : ''}>
                             <h2 className="inter">{note.title}</h2>
                             <ul>

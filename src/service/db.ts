@@ -70,6 +70,24 @@ function getAllNotes(): Promise<Note[]> {
   });
 }
 
+function getNote(id: IDBValidKey): Promise<Note> {
+  return new Promise((resolve, reject) => {
+    try {
+      (async () => {
+        const db = await openDB();
+        const tx = db.transaction(STORE_NAME, 'readonly')
+        const store = tx.objectStore(STORE_NAME)
+        const request = store.get(id)
+
+        request.onsuccess = () => resolve(request.result as Note);
+        request.onerror = () => reject(request.error);
+      })()
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
 function updateNote(nota: Note): Promise<void> {
   return new Promise((resolve, reject) => {
     try {
@@ -111,5 +129,6 @@ export const indexedDBService = {
   addNote,
   getAllNotes,
   removeNote,
-  updateNote
+  updateNote,
+  getNote
 };
